@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import axios from "axios";
+import './env';
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -12,7 +13,9 @@ const Home = () => {
         .get(
           "https://www.googleapis.com/books/v1/volumes?q=" +
             search +
-            "&key=AIzaSyCdRS3FG1F4EYbBr8gOT4Mn40-HzaPGvpE" + "&maxResults=40"
+            "&key=" +
+            GoogleAPI_KEY +
+            "&maxResults=40"
         )
         .then((res) => setBookData(res.data.items))
         .catch((error) => console.log(error));
